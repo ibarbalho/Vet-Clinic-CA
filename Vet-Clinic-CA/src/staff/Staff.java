@@ -82,11 +82,11 @@ public class Staff {
 	 */
 	public String generateNames() {
 		
-		String[] names = new String[]{"Brian", "Cristina", "Francisco", "Lud", "Steve", "Everton", "Vanessa", "Kelly", "Gael", "Kevin", "Ittalo",
+		String[] names = {"Brian", "Cristina", "Francisco", "Lud", "Steve", "Everton", "Vanessa", "Kelly", "Gael", "Kevin", "Ittalo",
 				"Ken", "Amilcar", "Lana", "Kira", "Kennedy", "kathleen", "Muriel", "Winnie", "Hian", "Fiona", "Pedro", "Tassio", "Irene", "Li",
 				"Emma", "Gavin", "Suellen", "Hanna", "Mario", "Brener", "Wellington", "Ger", "Ana", "Tara", "Gustavo", "Eduardo", "Nildo", "Raphael",
 				"Raphaela", "Trump", "Jorge", "Anitta", "Eva", "Luciano", "Bira", "Thais", "Nhelma", "Marcia", "Ju", "Bino", "Carl", "Charlotte"};
-	    String[] surnames = new String[]{"Kaminsky","Mansilla", "Klein","Ospina", "Troche", "Oquendo", "Del Barco", "Aponte", "Healy", "Brahimi",
+	    String[] surnames = {"Kaminsky","Mansilla", "Klein","Ospina", "Troche", "Oquendo", "Del Barco", "Aponte", "Healy", "Brahimi",
 	    		"Koroveshi", "Bauer", "Wimmer", "Barbalho", "Nyman", "Smith", "Muriel", "Forde", "Barbosa", "Felix", "Araujo", "Thomas", "Bacelar",
 	    		"Justus", "Barros", "Wei", "Schmidt", "Rodriguez", "Lee", "Walker", "White", "Barbosa", "Adams", "Peres", "Roberts", "Cooper",
 	    		"Cox", "Torres", "Gray", "Coleman", "Flores", "Ford", "Porter", "Connel", "Ramos", "Olson", "Banks", "Soto", "Hale", "Ball"};    
@@ -107,19 +107,19 @@ public class Staff {
     	//---------------------- Medical Staff -----------------------    	    	
     	//10 Veterinarian
     	for(int i = 0; i < 10; i++) {     		
-    		Veterinarian veterinarian = new Veterinarian(generateNames(), 70.000);
+    		Veterinarian veterinarian = new Veterinarian(generateNames(), 70000.0);
     		staffList.add(veterinarian);    
     		veterinarianList.add(veterinarian);    		
     	}    	
     	//10 Nurse
     	for(int i = 10; i < 20; i++) {     		
-			Nurse nurse = new Nurse(generateNames(), 80.000);
+			Nurse nurse = new Nurse(generateNames(), 80000.0);
 			staffList.add(nurse); 
 			nurseList.add(nurse);    		
     	}    	
     	//10 Physical Therapist
     	for(int i = 0; i < 10; i++) { 
-    		PhysicalTherapist physicalTherapist = new PhysicalTherapist(generateNames(), 100.000);
+    		PhysicalTherapist physicalTherapist = new PhysicalTherapist(generateNames(), 100000.0);
 			staffList.add(physicalTherapist);   
 			therapistList.add(physicalTherapist);
     	}       	
@@ -130,25 +130,25 @@ public class Staff {
     	 * ADMIN STAFF
     	 */
     	for(int i = 0; i < 2; i++) { 
-    		Receptionist recepcionist = new Receptionist(generateNames(), 100.000);
+    		Receptionist recepcionist = new Receptionist(generateNames(), 4000.0);
 			staffList.add(recepcionist);   
 			recepcinistList.add(recepcionist);    		
     	}    	
     	//2 IT
     	for(int i = 0; i < 2; i++) {
-    		IT it = new IT(generateNames(), 100.000);
+    		IT it = new IT(generateNames(), 100000.0);
 			staffList.add(it);   
 			itList.add(it);
     	}    	
     	//2 Cleaner
     	for(int i = 0; i < 2; i++) { 
-    		Cleaner cleaner = new Cleaner(generateNames(), 100.000);
+    		Cleaner cleaner = new Cleaner(generateNames(), 25000.0);
 			staffList.add(cleaner);  
 			cleanerList.add(cleaner);			
     	}    	
     	//6 Marketing
     	for(int i = 0; i < 6; i++) { 
-    		Marketing marketing = new Marketing(generateNames(), 100.000);
+    		Marketing marketing = new Marketing(generateNames(), 90000.0);
 			staffList.add(marketing);  
 			marketingList.add(marketing);
     	}    	        	
@@ -156,7 +156,10 @@ public class Staff {
     
 	public void listAllStaff() {
 		for(Staff list: staffList) {			
-			System.out.println(list.getName()+" - "+list.getStaffNumber());		
+			System.out.println("Name: "+list.getName()
+					+"\nStaff ID: "+list.getStaffNumber()
+					+"\nSalary: "+list.getSalaryLevel()
+					+"\n----------------------------------------");		
 		}		 			
 	}
 	
@@ -192,14 +195,21 @@ public class Staff {
 		}
 	}
 	
-	public void searchByName(String name) {			 
-		for(Staff list: staffList) {	
-			//System.out.println(list.getName());
-			System.out.println(list.getName().contains(name));			
+	public String searchByName(String name) {
+		String nameStaff = null;
+		for(Staff list: staffList) {			
+			if(list.getName().equalsIgnoreCase(name)) {
+				//System.out.println(list.getName());
+				nameStaff = list.getName();
+			}else {
+				System.out.println("NAME NOT FOUND");
+			}			
 		}	
+		
+		return nameStaff;
 	}
 	
-	public void adminStaffTasks(String typeStaff) {
+	public void adminStaffTasks(int typeStaff) {
 		
 		String[]tasksIT = new String[]{"Making Phone Calls", "Signing Docs", "Fixing PCS", "Buying Equipaments", "Meeting"};
 	    String[]tasksCleaner = new String[]{"Cleaning", "Storing suplies"};
@@ -208,22 +218,22 @@ public class Staff {
 	    		
 		String tasksITAux, tasksCleanerAux, taksMarketingAux, tasksRecepcionistAux;
 				
-		if(typeStaff.equals("receptionist")) {
+		if(typeStaff == 1) {
 			for(Staff list: recepcinistList) {
 				tasksRecepcionistAux = (tasksRecepcionist[new Random().nextInt(tasksRecepcionist.length)]);
 				System.out.println(list.getName() +" "+tasksRecepcionistAux);
 			}			
-		}else if(typeStaff.equals("it")) {
+		}else if(typeStaff == 2) {
 			for(Staff list: itList) {
 				tasksITAux = (tasksIT[new Random().nextInt(tasksIT.length)]);
 				System.out.println(list.getName()+" "+tasksITAux);
 			}
-		}else if(typeStaff.equals("cleaner")) {
+		}else if(typeStaff == 3) {
 			for(Staff list: cleanerList) {
 				tasksCleanerAux = (tasksCleaner[new Random().nextInt(tasksCleaner.length)]);
 				System.out.println(list.getName()+" "+tasksCleanerAux);
 			}
-		}else if(typeStaff.equals("marketing")) {
+		}else if(typeStaff == 4) {
 			for(Staff list: marketingList) {
 				taksMarketingAux = (taksMarketing[new Random().nextInt(taksMarketing.length)]);
 				System.out.println(list.getName()+" - "+taksMarketingAux);

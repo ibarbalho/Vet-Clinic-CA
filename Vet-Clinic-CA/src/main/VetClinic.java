@@ -1,149 +1,118 @@
 package main;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 import staff.Staff;
-import staff.medical.Nurse;
-import staff.medical.Veterinarian;
 
 public class VetClinic {
 	
-	public static void main(String[] args) {
-		
-//		List all Staff - OK
-//		List staff by categories (e.g. list all Nurses)
-//		List all Admin staff performing a certain task 
-//		Search for a specific member of staff by name
-//		List all animals
-//		List animals by various types (e.g. list all dogs)
-//		Search for a specific animal by name 
-		
-//		-----------------------------------------------------------
-		
-//		List all the animals assigned to a member of medical staff 
-//		List the order in which pets will be looked after by a particular member of the medical staff
-//		For a given member of the medical staff, pass to the next pet.
-		
+	public static void main(String[] args) {	
+	
+		Menu menu = new Menu();
 		Staff staff = new Staff();
-		Staff staff1 = new Veterinarian();
-		staff.namesStaff();
-		staff.listAllStaff();
-		//staff.lisAllVeterinarian();
-		
-		//staff.staffByCategorie(1);
-		
-		//staff.searchByName("Kevin Barbosa");
-		//staff.adminStaffTasks("marketing");
-		
-		//staff.lisAllCleaner();
-		
-//		Nurse nurse = new Nurse();
-//		nurse.getName();
-//		ArrayList<String> teste = new ArrayList<String>();
-//		teste.add("Ittalo Barbalho");
-//		teste.add("Ittalo Barbalho1");
-//		teste.add("Julio Frano");
-//		
-//		for(int i = 0; i < teste.size(); i++) {
-//			
-//			System.out.println(teste.contains("Ittalo"));
-//		}
-//		for(list: teste) {	
-//			//System.out.println(list.getName());
-//			System.out.println(list.getName().contains(name);			
-//		}	
-		
-		
-		
-	}
-}
-//		Menu menu = new Menu();
-//		Staff staff = new Staff();
-		
-		
-		
-		/**Scanner scanner = new Scanner(System.in);
-		
-		menu.showMenu();
-		int optionUser = scanner.nextInt(); 
+		Scanner scanner = new Scanner(System.in);
+				
 		boolean exit = false;
 		
+		menu.mainMenu();		
+		staff.namesStaff();
 		
 		do {
+			int option = scanner.nextInt(); 
 			
-			switch (optionUser) {
-			case 1:
-				System.out.println("\n----------------------");
-				System.out.println("1 - All Staff");	
-				System.out.println("\n0 - BACK MENU\n");
+			if(option == 1) {
+				
 				staff.listAllStaff();
-				exit = true;
-			case 2:
+				menu.mainMenu();
 				
-				break;
-			case 3:
+			}else if(option == 2) {	
 				
-				break;
-			case 4:
+				menu.staffByCategoriesMenu();				
 				
-				break;
-			case 5:
+				do {
+					option = scanner.nextInt(); 
+					if(option == 1) {
+						staff.staffByCategorie(1);						
+					}else if(option == 2) {
+						staff.staffByCategorie(2);
+					}else if(option == 3) {
+						staff.staffByCategorie(3);
+					}else if(option == 4) {
+						staff.staffByCategorie(4);
+					}else if(option == 5) {
+						staff.staffByCategorie(5);						
+					}else if(option == 6) {
+						staff.staffByCategorie(6);
+					}else if(option == 7) {
+						staff.staffByCategorie(7);
+					}else if(option == 0){
+						menu.mainMenu();
+						break;
+					}
+					
+				}while (!exit); 				
 				
-				break;
-			case 6:
+			}else if(option == 3) {
 				
-				break;
-			case 7:
+				menu.adminTasksMenu();
 				
-				break;
-			case 8:
+				do {
+					option = scanner.nextInt(); 
+					if(option == 1) {
+						staff.adminStaffTasks(1);						
+					}else if(option == 2) {
+						staff.adminStaffTasks(2);
+					}else if(option == 3) {
+						staff.adminStaffTasks(3);
+					}else if(option == 4) {
+						staff.adminStaffTasks(4);
+					}else if(option == 0){
+						menu.mainMenu();
+						break;
+					}
+					
+				}while (!exit); 	
 				
-				break;
-
-			default:
-				break;
+			}else if(option == 4) {
+				System.out.println("4 - SEARCH A STAFF MEMBER BY NAME");
+				
+				System.out.println("\nENTER A NAME: ");
+				
+				do {					
+					
+					String name = scanner.next();
+					//option = scanner.nextInt(); 
+					
+					staff.searchByName(name);
+					
+					
+				}while (!exit); 	
+				
+				
 			}
-			
-			
-		
 			
 		}while(!exit);
+	
+					
+		scanner.close();
+	}
+}
 		
-		scanner.close();*/
 		
-		/**	
-			if(optionUser == 1) {
-				System.out.println("\n----------------------");
-				System.out.println("1 - All Staff");	
-				System.out.println("\n0 - BACK MENU\n");
-				staff.listAllStaff();
-				exit = true;
-			}else if(optionUser == 2) {
-				
-				exit = true;
-			}else if(optionUser == 3) {
-				
-				exit = true;
-			}else if(optionUser == 4) {
-				
-				exit = true;
-			}else if(optionUser == 5) {
-				
-				exit = true;
-			}else if(optionUser == 6) {
-				
-				exit = true;
-			}else if(optionUser == 7) {
-				
-				exit = true;
-			}else if(optionUser == 8) {
-				
-			}
 			
-		}while(!exit);*/
+
 		
-		
-		
+//if(option == 1) {
+//	menu.staffMenu();
+//	if(option == 1) {
+//		staff.listAllStaff();
+//	}
+//}else if(option == 2) {
+//	menu.animalsMenu();
+//}else if(option == 0) {
+//	exit = true;				
+//	System.out.println("FINISHED - THANK YOU");				
+//}
 					
 		
 	
