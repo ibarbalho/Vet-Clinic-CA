@@ -65,8 +65,20 @@ public class Staff {
 	public void setType(String type) {
 		this.type = type;
 	}	
+	
+	
    
-   	ArrayList<Staff> staffList = new ArrayList<Staff>();
+//   	@Override
+//	public String toString() {
+//		return "Staff [name=" + name + ", staffNumber=" + staffNumber + ", salaryLevel=" + salaryLevel + ", type="
+//				+ type + ", staffList=" + staffList + ", veterinarianList=" + veterinarianList + ", nurseList="
+//				+ nurseList + ", therapistList=" + therapistList + ", recepcinistList=" + recepcinistList + ", itList="
+//				+ itList + ", cleanerList=" + cleanerList + ", marketingList=" + marketingList + "]";
+//	}
+
+
+
+	ArrayList<Staff> staffList = new ArrayList<Staff>();
 	ArrayList<Veterinarian> veterinarianList = new ArrayList<Veterinarian>();
 	ArrayList<Nurse> nurseList = new ArrayList<Nurse>();
 	ArrayList<PhysicalTherapist> therapistList = new ArrayList<PhysicalTherapist>();
@@ -129,6 +141,7 @@ public class Staff {
     	 * 
     	 * ADMIN STAFF
     	 */
+    	//2 Recepcionist
     	for(int i = 0; i < 2; i++) { 
     		Receptionist recepcionist = new Receptionist(generateNames(), 4000.0);
 			staffList.add(recepcionist);   
@@ -150,7 +163,7 @@ public class Staff {
     	for(int i = 0; i < 6; i++) { 
     		Marketing marketing = new Marketing(generateNames(), 90000.0);
 			staffList.add(marketing);  
-			marketingList.add(marketing);
+			marketingList.add(marketing);			
     	}    	        	
 	}	
     
@@ -195,18 +208,12 @@ public class Staff {
 		}
 	}
 	
-	public String searchByName(String name) {
-		String nameStaff = null;
-		for(Staff list: staffList) {			
-			if(list.getName().equalsIgnoreCase(name)) {
-				//System.out.println(list.getName());
-				nameStaff = list.getName();
-			}else {
-				System.out.println("NAME NOT FOUND");
-			}			
-		}	
-		
-		return nameStaff;
+	public void searchByName(String name) {		
+		for(Staff list: staffList) {				
+			if(list.getName().toLowerCase().equalsIgnoreCase(name)) {				
+				System.out.println(list.getName());
+			}
+		}			
 	}
 	
 	public void adminStaffTasks(int typeStaff) {

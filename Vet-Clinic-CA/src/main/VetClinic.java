@@ -17,7 +17,8 @@ public class VetClinic {
 		menu.mainMenu();		
 		staff.namesStaff();
 		
-		do {
+		
+			do {
 			int option = scanner.nextInt(); 
 			
 			if(option == 1) {
@@ -78,13 +79,12 @@ public class VetClinic {
 				
 				System.out.println("\nENTER A NAME: ");
 				
-				do {					
+				do {
 					
-					String name = scanner.next();
-					//option = scanner.nextInt(); 
-					
-					staff.searchByName(name);
-					
+					scanner.nextLine();
+					String search = scanner.nextLine();
+									
+					staff.searchByName(search);					
 					
 				}while (!exit); 	
 				
