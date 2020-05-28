@@ -28,10 +28,11 @@ public class Staff {
 		
 	}		
 
-	public Staff(String name, double salaryLevel) {		
+	public Staff(String name, double salaryLevel, String type) {		
 		this.name = name;
 		this.staffNumber = count ++;
 		this.salaryLevel = salaryLevel;
+		this.type = type;
 	}
 
 	public String getName() {
@@ -68,13 +69,14 @@ public class Staff {
 	
 	
    
-//   	@Override
-//	public String toString() {
-//		return "Staff [name=" + name + ", staffNumber=" + staffNumber + ", salaryLevel=" + salaryLevel + ", type="
-//				+ type + ", staffList=" + staffList + ", veterinarianList=" + veterinarianList + ", nurseList="
-//				+ nurseList + ", therapistList=" + therapistList + ", recepcinistList=" + recepcinistList + ", itList="
-//				+ itList + ", cleanerList=" + cleanerList + ", marketingList=" + marketingList + "]";
-//	}
+   	@Override
+	public String toString() {
+		return "Name: "+name
+		+"\nStaff ID: "+staffNumber
+		+"\nType: "+type
+		+"\nSalary: "+salaryLevel
+		+"\n----------------------------------------";
+	}
 
 
 
@@ -119,19 +121,19 @@ public class Staff {
     	//---------------------- Medical Staff -----------------------    	    	
     	//10 Veterinarian
     	for(int i = 0; i < 10; i++) {     		
-    		Veterinarian veterinarian = new Veterinarian(generateNames(), 70000.0);
+    		Veterinarian veterinarian = new Veterinarian(generateNames(), 70000.0, "Veterinarian");
     		staffList.add(veterinarian);    
     		veterinarianList.add(veterinarian);    		
     	}    	
     	//10 Nurse
     	for(int i = 10; i < 20; i++) {     		
-			Nurse nurse = new Nurse(generateNames(), 80000.0);
+			Nurse nurse = new Nurse(generateNames(), 80000.0, "Nurse");
 			staffList.add(nurse); 
 			nurseList.add(nurse);    		
     	}    	
     	//10 Physical Therapist
     	for(int i = 0; i < 10; i++) { 
-    		PhysicalTherapist physicalTherapist = new PhysicalTherapist(generateNames(), 100000.0);
+    		PhysicalTherapist physicalTherapist = new PhysicalTherapist(generateNames(), 100000.0, "Physical Therapist");
 			staffList.add(physicalTherapist);   
 			therapistList.add(physicalTherapist);
     	}       	
@@ -143,25 +145,25 @@ public class Staff {
     	 */
     	//2 Recepcionist
     	for(int i = 0; i < 2; i++) { 
-    		Receptionist recepcionist = new Receptionist(generateNames(), 4000.0);
+    		Receptionist recepcionist = new Receptionist(generateNames(), 4000.0, "Recepcionist");
 			staffList.add(recepcionist);   
 			recepcinistList.add(recepcionist);    		
     	}    	
     	//2 IT
     	for(int i = 0; i < 2; i++) {
-    		IT it = new IT(generateNames(), 100000.0);
+    		IT it = new IT(generateNames(), 100000.0, "IT");
 			staffList.add(it);   
 			itList.add(it);
     	}    	
     	//2 Cleaner
     	for(int i = 0; i < 2; i++) { 
-    		Cleaner cleaner = new Cleaner(generateNames(), 25000.0);
+    		Cleaner cleaner = new Cleaner(generateNames(), 25000.0, "Cleaner");
 			staffList.add(cleaner);  
 			cleanerList.add(cleaner);			
     	}    	
     	//6 Marketing
     	for(int i = 0; i < 6; i++) { 
-    		Marketing marketing = new Marketing(generateNames(), 90000.0);
+    		Marketing marketing = new Marketing(generateNames(), 90000.0, "Marketing");
 			staffList.add(marketing);  
 			marketingList.add(marketing);			
     	}    	        	
@@ -169,51 +171,55 @@ public class Staff {
     
 	public void listAllStaff() {
 		for(Staff list: staffList) {			
-			System.out.println("Name: "+list.getName()
-					+"\nStaff ID: "+list.getStaffNumber()
-					+"\nSalary: "+list.getSalaryLevel()
-					+"\n----------------------------------------");		
+			System.out.println(list.toString());		
 		}		 			
 	}
 	
 	public void staffByCategorie(int categorie) {			
 		if(categorie == 1 ) {
 			for(Staff list: veterinarianList) {
-				System.out.println(list.getName());				
+				System.out.println(list.toString());				
 			}
 		}else if(categorie == 2) {
 			for(Staff list: nurseList) {
-				System.out.println(list.getName());
+				System.out.println(list.toString());	
 			}
 		}else if(categorie == 3) {
 			for(Staff list: therapistList) {
-				System.out.println(list.getName());
+				System.out.println(list.toString());	
 			}
 		}else if(categorie == 4) {
 			for(Staff list: recepcinistList) {
-				System.out.println(list.getName());
+				System.out.println(list.toString());	
 			}
 		}else if(categorie == 5) {	
 			for(Staff list: itList) {
-				System.out.println(list.getName());
+				System.out.println(list.toString());	
 			}
 		}else if(categorie == 6) {			
 			for(Staff list: cleanerList) {
-				System.out.println(list.getName());
+				System.out.println(list.toString());	
 			}
 		}else if(categorie == 7) {		
 			for(Staff list: marketingList) {
-				System.out.println(list.getName());
+				System.out.println(list.toString());	
 			}
 		}
 	}
 	
-	public void searchByName(String name) {		
+	public void searchByName(String name) {			
+		boolean notFound = false;
 		for(Staff list: staffList) {				
 			if(list.getName().toLowerCase().equalsIgnoreCase(name)) {				
-				System.out.println(list.getName());
+				System.out.println(list.toString());
+				notFound = true;
 			}
-		}			
+		}
+		if(notFound == false) {
+			System.out.println("STAFF NOT FOUND"
+					+ "\n----------------------------------------");
+		}
+		
 	}
 	
 	public void adminStaffTasks(int typeStaff) {

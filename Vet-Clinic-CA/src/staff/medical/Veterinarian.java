@@ -7,7 +7,7 @@ public class Veterinarian extends Staff{
 		super();
 	}
 
-	public Veterinarian(String name, double salaryLevel) {
-		super(name, salaryLevel);
+	public Veterinarian(String name, double salaryLevel, String type) {
+		super(name, salaryLevel, type);
 	}
 }
