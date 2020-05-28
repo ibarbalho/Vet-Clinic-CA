@@ -4,7 +4,14 @@ import java.util.Scanner;
 
 import animals.Animals;
 import staff.Staff;
-
+/**
+ * 
+ * @author Íttalo Barbalho
+ * 
+ * Main Class of the program, when you start the program, you should choose a number from the menu, 
+ * if you enter a invalid character, you will get a message to restart the program
+ *
+ */
 public class VetClinic {
 	
 	public static void main(String[] args) {	
@@ -21,8 +28,7 @@ public class VetClinic {
 		
 		menu.mainMenu();		
 		staff.namesStaff();
-		animals.namesAnimals();
-		
+		animals.namesAnimals();		
 			
 		try {	
 			
