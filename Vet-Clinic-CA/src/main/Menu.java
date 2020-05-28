@@ -64,7 +64,7 @@ public class Menu {
 			System.out.println(body);		
 	}
 	
-	public void animlasByType() {		
+	public void animalsByType() {		
 		body = "\nANIMALS BY TYPE:"
 				+ "\n\n1 - CAT"
 				+ "\n2 - DOG"
@@ -75,12 +75,5 @@ public class Menu {
 				+ "\n----------------------------------------";
 				
 				System.out.println(body);	
-	}
-	
-//	public int userImput() {
-//		
-//		
-//		
-//	}
-	
+	}	
 }

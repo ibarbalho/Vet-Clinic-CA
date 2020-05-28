@@ -234,22 +234,31 @@ public class Staff {
 		if(typeStaff == 1) {
 			for(Staff list: recepcinistList) {
 				tasksRecepcionistAux = (tasksRecepcionist[new Random().nextInt(tasksRecepcionist.length)]);
-				System.out.println(list.getName() +" "+tasksRecepcionistAux);
+				System.out.println("Name: "+list.getName() 
+				+"\nTask: "+tasksRecepcionistAux
+				+"\n----------------------------------------");
 			}			
 		}else if(typeStaff == 2) {
 			for(Staff list: itList) {
 				tasksITAux = (tasksIT[new Random().nextInt(tasksIT.length)]);
-				System.out.println(list.getName()+" "+tasksITAux);
+				System.out.println("Name: "+list.getName() 
+				+"\nTask: "+tasksITAux
+				+"\n----------------------------------------");
 			}
 		}else if(typeStaff == 3) {
 			for(Staff list: cleanerList) {
 				tasksCleanerAux = (tasksCleaner[new Random().nextInt(tasksCleaner.length)]);
-				System.out.println(list.getName()+" "+tasksCleanerAux);
+				System.out.println("Name: "+list.getName() 
+				+"\nTask: "+tasksCleanerAux
+				+"\n----------------------------------------");
 			}
 		}else if(typeStaff == 4) {
 			for(Staff list: marketingList) {
 				taksMarketingAux = (taksMarketing[new Random().nextInt(taksMarketing.length)]);
-				System.out.println(list.getName()+" - "+taksMarketingAux);
+				System.out.println("Name: "+list.getName() 
+				+"\nTask: "+taksMarketingAux
+				+"\n----------------------------------------");				
+				
 			}
 		}
 	}	
