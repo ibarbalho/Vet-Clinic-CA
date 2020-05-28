@@ -10,11 +10,9 @@ import staff.admin.Receptionist;
 import staff.medical.Nurse;
 import staff.medical.PhysicalTherapist;
 import staff.medical.Veterinarian;
-/**
- * 
- * @author Íttalo Barbalho * 
- * Class for objects type Staff, it is responsible for grouping all information about veterinary clinic employees. 
- *
+/**  
+ * @author Íttalo Barbalho  
+ * Class for objects type Staff, it is responsible for grouping all information about veterinary clinic employees.  
  */
 public class Staff {
 	
@@ -67,7 +65,6 @@ public class Staff {
 		this.type = type;
 	}	
 	
-	
    
    	@Override
 	public String toString() {
@@ -77,8 +74,6 @@ public class Staff {
 		+"\nSalary: "+salaryLevel
 		+"\n----------------------------------------";
 	}
-
-
 
 	ArrayList<Staff> staffList = new ArrayList<Staff>();
 	ArrayList<Veterinarian> veterinarianList = new ArrayList<Veterinarian>();
@@ -90,9 +85,8 @@ public class Staff {
 	ArrayList<Marketing> marketingList = new ArrayList<Marketing>();
 	
 	/**
-	 * Method generateNames creates a Full name (Names + Last Name) by a Random search in the array names and surnames.
-	 * 
-	 * @return String 
+	 * Method generateNames returns a Full name (Names + Last Name) by a Random search in the array names and surnames.	  
+	 * @return String fullname 
 	 */
 	public String generateNames() {
 		
@@ -115,7 +109,8 @@ public class Staff {
 	}	
 	
 	/**
-	 * The method nameStaff 
+	 * The method nameStaff add names, salary and type for each category
+	 * Each staff is added in a Arraylist for Staff and a second array for Category
 	 */
     public void namesStaff() {		   	  	
     	//---------------------- Medical Staff -----------------------    	    	
@@ -137,12 +132,7 @@ public class Staff {
 			staffList.add(physicalTherapist);   
 			therapistList.add(physicalTherapist);
     	}       	
-    	//------------------------ Admin Staff -----------------------
-    	//2 Receptionist
-    	/**
-    	 * 
-    	 * ADMIN STAFF
-    	 */
+    	//------------------------ Admin Staff -----------------------    	
     	//2 Recepcionist
     	for(int i = 0; i < 2; i++) { 
     		Receptionist recepcionist = new Receptionist(generateNames(), 4000.0, "Recepcionist");
@@ -169,12 +159,19 @@ public class Staff {
     	}    	        	
 	}	
     
+    /**
+     * This method list all Staff in the ArrayList Staff
+     */
 	public void listAllStaff() {
 		for(Staff list: staffList) {			
 			System.out.println(list.toString());		
 		}		 			
 	}
 	
+	/**
+	 * ThiS method search for all Staff by Categoria, it shows a list of names in a Arraylist.	  
+	 * @param categorie - value from the Menu between 1 and 7
+	 */
 	public void staffByCategorie(int categorie) {			
 		if(categorie == 1 ) {
 			for(Staff list: veterinarianList) {
@@ -207,6 +204,10 @@ public class Staff {
 		}
 	}
 	
+	/**
+	 * This method shows names of Staff by name, all names are converted to lowercase words and compared with the array Staff
+	 * @param name
+	 */
 	public void searchByName(String name) {			
 		boolean notFound = false;
 		for(Staff list: staffList) {				
@@ -222,6 +223,11 @@ public class Staff {
 		
 	}
 	
+	/**
+	 * This method adds tasks for each category of Admin Staff by a Random search in an arrays, 
+	 * each category has a respective array with activities
+	 * @param typeStaff
+	 */
 	public void adminStaffTasks(int typeStaff) {
 		
 		String[]tasksIT = new String[]{"Making Phone Calls", "Signing Docs", "Fixing PCS", "Buying Equipaments", "Meeting"};

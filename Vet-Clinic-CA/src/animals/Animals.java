@@ -2,7 +2,11 @@ package animals;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * Class for objects type Animals
+ * @author Íttalo Barbalho
+ *
+ */
 public class Animals {
 	
 	private String type;
@@ -63,8 +67,6 @@ public class Animals {
 				+"\n----------------------------------------";
 	}
 
-
-
 	ArrayList<Animals> animalsList = new ArrayList<Animals>();
 	ArrayList<Cat> catList = new ArrayList<Cat>();
 	ArrayList<Dog> dogList = new ArrayList<Dog>();
@@ -72,10 +74,13 @@ public class Animals {
 	ArrayList<Pig> pigList = new ArrayList<Pig>();
 	ArrayList<Turtle> turtleList = new ArrayList<Turtle>();
 
-	
+	/**
+	 * Method generateNames returns a Ramdom name for each Animal from animalNames array
+	 * @return String namesAnimals
+	 */
 	public String generateNames() {
 		 
-		String[] animalNames = new String[]{"Abbey", "Abbie", "Abby", "Abel", "Abigail", "Ace", "Adam", "Addie", "Admiral", "Aggie", "Aires",
+		String[] animalNames = {"Abbey", "Abbie", "Abby", "Abel", "Abigail", "Ace", "Adam", "Addie", "Admiral", "Aggie", "Aires",
 					 "Aj", "Ajax", "Aldo", "Alex", "Alexus", "Alf", "Alfie", "Allie", "Ally", "Amber", "Amie", "Amigo", "Amos", "Amy", "Andy", "Angel",
 					 "Angus", "Annie", "Apollo", "April", "Archie", "Argus", "Aries", "Armanti", "Arnie", "Arrow", "Ashes", "Ashley", "Astro", "Athena",
 					 "Atlas", "Audi", "Augie", "Aussie", "Austin", "Autumn", "Axel", "Axle", "Babbles", "Babe", "Baby", "Babykins", "Bacchus", "Bailey",
@@ -235,12 +240,22 @@ public class Animals {
 		
 	}
 	
+	/**
+	 * The method returns a ramdom age between 1 and the number from the parameter age,
+	 *  if the parameter age gets number 30, it will returns a value between 1 and 30
+	 * @param age - the maximum age of the animal
+	 * @return randomAge 
+	 */
 	public int generateAge(int age) {		
 		Random random = new Random();
 		int randomAge = random.nextInt(age) + 1;	
 		return randomAge;
 	}	
 	
+	/**
+	 * Method generateMedicalCondition returns a Ramdom name for each Animal from animalNames array
+	 * @return medicalConditions
+	 */
 	public String generateMedicalCondition() {
 		String[] animalConditions = new String[]{"Arthritis", "Cancer", "Dental Disease", "Diabetes", "Distemper", "Ear Mites", "Epilepsy", "Flea Bite Allergies",
 				"Gastric", "Heartworm", "Mange", "Rabies", "Vestibular Disease", "Anthrax", "Brucellosis", "Campylobacter", "Cryptosporidiosis", "Diphtheria", "Echinococcosis",
@@ -253,7 +268,10 @@ public class Animals {
 		return medicalConditions;
 	}
 	
-	
+	/**
+	 * The method namesAnimals add Type, Name, Age and Medical Condition for each category of animal
+	 * Each type of animal is added in a Arraylist Animals and a second Arraylist for type
+	 */
 	 public void namesAnimals() {		   	  	
     	//---------------------- Medical Staff -----------------------    	    	
     	//200 Cats
@@ -291,12 +309,19 @@ public class Animals {
     	}   
 	 }
 	 
+	 /**
+	  *  This method list all Animals in the ArrayList Animals
+	  */
 	public void listAllAnimals() {
 		for(Animals list: animalsList) {			
 			System.out.println(list.toString());		
 		}		 			
 	}
 	
+	/**
+	 * ThiS method search for all animals by Type, it shows a list from the ArrayList.
+	 * @param type - options from the user Menu
+	 */
 	public void animlasByType(int type) {			
 		if(type == 1 ) {
 			for(Animals list: catList) {
@@ -321,6 +346,10 @@ public class Animals {
 		}
 	}
 	
+	/**
+	 * Shows informations of Animal by its name, all names are converted to lowercase words and compared with the Arraylist Animals
+	 * @param name - the user must inform an animal name to find in the Arraylist
+	 */
 	public void searchAnimalByName(String name) {		
 		for(Animals list: animalsList) {				
 			if(list.getName().toLowerCase().equalsIgnoreCase(name)) {				
