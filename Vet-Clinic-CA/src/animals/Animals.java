@@ -1,7 +1,10 @@
 package animals;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
+
+import staff.medical.Veterinarian;
 /**
  * Class for objects type Animals
  * @author Íttalo Barbalho
@@ -73,7 +76,9 @@ public class Animals {
 	ArrayList<Horse> horseList = new ArrayList<Horse>();
 	ArrayList<Pig> pigList = new ArrayList<Pig>();
 	ArrayList<Turtle> turtleList = new ArrayList<Turtle>();
-
+	ArrayList<Veterinarian> vet = new ArrayList<Veterinarian>(); 
+	
+	
 	/**
 	 * Method generateNames returns a Ramdom name for each Animal from animalNames array
 	 * @return String namesAnimals
